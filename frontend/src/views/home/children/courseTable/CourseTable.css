@@ -1,0 +1,31 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+  
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .ant-form-item{
+    width: 400px;
+  }
+  
+  .course{
+    margin-bottom: 20px;
+  }
+  .course_table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+  
+    height: 100%;
+  }
+  
+  .course, .table{
+    border: 1px solid #bbb;
+  }
+  
+  .table {
+    height: 440px;
+  }
