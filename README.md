@@ -33,7 +33,7 @@ npm install
 npm run start
 ```
 
-## How to test it
+## How to test it (assignment requirment)
 ### Use any front-end technology to create a form and a panel/modal/card to display the result of registration request.
 1. Please input a false username and a registered email and choose a course, then click submit, there will be display "This email has been registered, please confirm your username".
 <img width="1410" alt="image" src="https://user-images.githubusercontent.com/91811861/198793973-6801145c-5810-478a-96a4-58a36939527d.png">
@@ -68,3 +68,15 @@ Please check the validation part, it includes user and course validation
 ##
 ### Create a dummy database with user and course models. Validate user and course from database. Add user if does not exist. Can use any database management tech.
 I tried to create user table, course table and usermaptocourse table in mysql database, and do the validation using these tables, please check the validation part for detail.
+
+##
+### Database schema
+courses table
+<img width="615" alt="image" src="https://user-images.githubusercontent.com/91811861/198812750-932ea104-5f4a-410f-83cf-5f375ec6a910.png">
+users table
+<img width="370" alt="image" src="https://user-images.githubusercontent.com/91811861/198812764-1cfb9426-20d7-443e-8d96-d40a6e832646.png">
+select_course table
+<img width="249" alt="image" src="https://user-images.githubusercontent.com/91811861/198812776-9a28ed44-aa36-4772-9567-5e28b6fca14c.png">
+
+
+##
