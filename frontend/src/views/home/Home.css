@@ -1,7 +1,10 @@
 .tab{
-    padding: 20px 100px;
-  }
-  
-  .home {
-    padding: 20px 40px;
-  }
+  padding: 40px 100px;
+}
+
+
+.home {
+  width: 1600px;
+  padding: 40px 0;
+  margin:  0 auto;
+}

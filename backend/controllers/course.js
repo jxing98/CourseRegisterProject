@@ -41,6 +41,15 @@ class Course {
     // save the user directly to user table if the user don't exist
       const tempUser = UserModel.build({ email, name })
       user = await tempUser.save()
+      // Check whether new user select a invaild course
+      const targetCourse = await CourseModel.findOne({ where: { id: courseId } })
+      if (targetCourse.dataValues.capacity < 1) {
+        res.send({
+          code: 201,
+          message: 'Successfully registered a new user, but the class is full, and you are in waitlist'
+        })
+        return
+      }
       Course.selectCourse(user.dataValues.id, courseId, comment, res, req)
     }
   }
