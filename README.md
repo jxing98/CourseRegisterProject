@@ -50,24 +50,31 @@ npm run start
 
 ##
 ### Form Input: User full name, email address, current semester or year, dropdown list of available courses, a text box for comments/ message to instructor and button to submit.
-1. There are username, emailaddress, semester and year dropdown list, and then the semester and year can determine the courses and show in courses dropdown list. 
+1. There are username, email address, semester and year dropdown list, and then the semester and year can determine the courses and show in courses dropdown list. 
 <img width="1458" alt="image" src="https://user-images.githubusercontent.com/91811861/198764773-4e107fb1-3aec-4183-9156-59bab4b4dddb.png">
 2. You need to enter username, vaild email address and choose a course and then you can click submit button, if there is invaild part, submit is unclickable and there will be alert.
 <img width="1458" alt="image" src="https://user-images.githubusercontent.com/91811861/198765587-6c7373d1-7160-4914-94ae-6f7ee40042cd.png">
 3. You can use reset button to reset all the form information
-##
 
+
+##
 ### Ability to submit the form. Send a request to the server for processing
-I tried to use React create the frontend interface, and do the form validation in the frontend, then use axios send request to backend.
+I tried to use React create the frontend interface, and do the form validation in the frontend, if the form is vaild, then use axios send request to backend. Then use the backend response to show the notification information.
 ##
 ### Use any server-side framework to handle requests, validate and respond to the request.
-I tried to use Express create the backend and use getCourse and addCourse Api to handle the request.
+I tried to use Express create the backend and use getCourse and addCourse Api to handle the request. It will deal with user authentication and course validation.
+
 ##
 ### Add user authentication
-Please check the validation part, it includes user and course validation
+1. I add user authentication at the backend side.
+2. If there is already exist user, first check whether it's name and email is vaild. I use email as unique key in the table and if there is exist this email but username is incorrect, it will response error info. 
+3. Then if username and email is vaild, use this user to register a course.
+4. If we don't have email in the user table, we will create a new user and register a course.
+5. There can be user with same username, but email is unique.
+
 ##
 ### Create a dummy database with user and course models. Validate user and course from database. Add user if does not exist. Can use any database management tech.
-I tried to create user table, course table and usermaptocourse table in mysql database, and do the validation using these tables, please check the validation part for detail.
+I tried to create user table, course table and select_course table in mysql database, and do the validation using these tables, please check the database part for detail.
 
 ##
 ### Database schema
@@ -87,6 +94,12 @@ select_course table
 
 
 <img width="249" alt="image" src="https://user-images.githubusercontent.com/91811861/198812776-9a28ed44-aa36-4772-9567-5e28b6fca14c.png">
+
+##
+### About the table
+1. I add a table here to show the course info for user, it can make user easier to find the right course and it's capacity.
+2. This table will change with the search info (year, semester).
+<img width="1477" alt="image" src="https://user-images.githubusercontent.com/91811861/198813215-1a5cdca3-56d4-491e-95ce-c90342b0a856.png">
 
 
 ##
