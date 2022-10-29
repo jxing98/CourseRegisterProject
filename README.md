@@ -1,6 +1,9 @@
 # CourseRegisterProject
 JinXing's project for research engineer HW
 
+<img width="1479" alt="image" src="https://user-images.githubusercontent.com/91811861/198818841-50bb9314-6912-46d9-9957-0bc66ac4b136.png">
+
+
 ## How to run it
 1. If you don't have mysql on your local computer please install mysql first https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/
 2. After successfully install mysql database, open your mysql client and create database and table 
