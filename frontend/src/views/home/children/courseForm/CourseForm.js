@@ -126,7 +126,7 @@ function CourseForm(props) {
     postRequest('/course', data).then((result) => {
       if (result.code === 200) {
         message.success(
-          'Successfully registered a new user and successfully enrolled a course'
+          result.message
         )
         handleReset()
       } else {
