@@ -39,18 +39,22 @@ function CourseTable(props) {
   const [courseList, setCourseList] = useState([])
   const [total, setTotal] = useState(0)
 
+  // Send request and get the course list 
   useEffect(() => {
     _getCourse({ pageSize: 5, page: 1 })
   }, [])
 
+  // When the search info change, send request and get the course list 
   useEffect(() => {
     _getCourse({ pageSize: 5, page: 1, ...props.searchInfo })
   }, [props.searchInfo])
 
+  // When the pagination change, send request and get the course list 
   const paginationChange = (page, pageSize) => {
     _getCourse({ page, pageSize, ...props.searchInfo })
   }
 
+  // Get the course list which used for table
   const _getCourse = (data) => {
     getRequest('/course', data).then((result) => {
       setCourseList(result.data.rows)

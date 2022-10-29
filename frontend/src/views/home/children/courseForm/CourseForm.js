@@ -39,20 +39,25 @@ const validateMessages = {
 
 function CourseForm(props) {
   const [form] = Form.useForm()
+  // form course list
   const [selectCourseList, setSelectCourseList] = useState([])
+  // Info for submit to backend (username, email, comment, course info, course ID)
   const [courseInfo, setCourseInfo] = useState({})
+  // Search info (year, semester)
   const [searchInfo, setSearchInfo] = useState({})
 
   useEffect(() => {
     _getAllCourse({ pageSize: 1000, page: 1 })
   }, [])
 
+  // After reset, reset the from and reset search info
   const handleReset = () => {
     form.resetFields()
     props.handlesearch({})
     _getAllCourse({ pageSize: 1000, page: 1 })
   }
 
+  // After year change, change the search info
   const onYearChange = (date, dateString) => {
     setSearchInfo({
       ...searchInfo,
@@ -61,6 +66,7 @@ function CourseForm(props) {
     handleSearchAndGetCourse({ ...searchInfo, year: dateString })
   }
 
+  // After semester change, change the search info
   const onSemesterChange = (value) => {
     setSearchInfo({
       ...searchInfo,
@@ -69,8 +75,8 @@ function CourseForm(props) {
     handleSearchAndGetCourse({ ...searchInfo, semester: value })
   }
 
+  // Handle reset and search
   const handleSearchAndGetCourse = (searchInfo) => {
-
     // Delete this string when the searchInfo is empty
     for (var key in searchInfo) {
       if (!searchInfo[key]) {
@@ -78,12 +84,13 @@ function CourseForm(props) {
       }
     }
     props.handlesearch(searchInfo)
-
     // When re-selecting year and semester, set course blank
     form.setFieldValue('course', '')
+    // Refresh the form
     _getAllCourse(searchInfo)
   }
 
+  // When the choosen course change, save the course ID
   const onCourseChange = (value) => {
     setCourseInfo({
       ...courseInfo,
@@ -91,6 +98,7 @@ function CourseForm(props) {
     })
   }
 
+  // When the comment change, save the comment info
   const onCommentInput = (value) => {
     setCourseInfo({
       ...courseInfo,
@@ -98,12 +106,13 @@ function CourseForm(props) {
     })
   }
 
+  // Handle submit 
   const onFinish = (values) => {
-
     // Extract the selected course object
     const course = selectCourseList.filter(
       (item) => item.id === courseInfo.course
     )[0]
+    // If the remine capacity is enough, send the request
     if (course.capacity >= 0) {
       _addMyCourse({
         comment: courseInfo.comment || '',
@@ -111,17 +120,20 @@ function CourseForm(props) {
         name: values.name,
         email: values.email
       })
+    // If the capacity is not enough, send back error info
     } else {
       message.error('Sorry, the class is full, and you are in waitlist')
     }
   }
 
+  // Send request get all course list
   const _getAllCourse = (data) => {
     getRequest('/course', data).then((result) => {
       setSelectCourseList(result.data.rows)
     })
   }
 
+  // Send request get selected course list
   const _addMyCourse = (data) => {
     postRequest('/course', data).then((result) => {
       if (result.code === 200) {

@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize')
 
-// Please your own database name, username and password here
+// Please use your own database name, username and password here
 const dbName = 'course'
 const userName = 'root'
 const passWord = '1122334455'

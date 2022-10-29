@@ -3,11 +3,10 @@ const UserModel = require("../models/user");
 const SelectCourseModel = require("../models/select_course");
 
 class Course {
-  // Get course list
+
+  // Get course list, this api will be used for table
   async getCourse(req, res) {
     const { page, pageSize, ...courseInfo } = req.query;
-
-    //
     const result = await CourseModel.findAndCountAll({
       offset: Number(page - 1) * Number(pageSize) || 0,
       limit: Number(pageSize) || 10,
@@ -44,6 +43,7 @@ class Course {
         false
       );
     } else {
+
       // save the user directly to user table if the user don't exist
       const tempUser = UserModel.build({ email, name });
       user = await tempUser.save();
@@ -60,6 +60,7 @@ class Course {
 
   // Handle course select logic
   static async selectCourse(res, req, studentId, courseId, comment, isNew) {
+
     // Whether the user has selected this course
     let targetCourse = await SelectCourseModel.findOne({
       where: {
@@ -75,8 +76,10 @@ class Course {
       return;
     }
 
-    // Get the corresponding course capacity
+    // Get the corresponding course capacity, and check if the capacity is vaild
     targetCourse = await CourseModel.findOne({ where: { id: courseId } });
+
+    // If the capacity is not vaild, but this is a new user, add this user but don't add the course
     if (targetCourse.dataValues.capacity < 1 && isNew) {
       res.send({
         code: 201,
@@ -84,6 +87,8 @@ class Course {
           "Successfully registered a new user, but the class is full, and you are in waitlist",
       });
       return;
+      
+    // If the capacity is not vaild but this is not a new user, do nothing chnage and send back error
     } else if (targetCourse.dataValues.capacity < 1) {
       res.send({
         code: 201,
@@ -92,7 +97,7 @@ class Course {
       return;
     }
 
-    // Save the course for select_course table and course table
+    // If capacity is vaild, Save the course for select_course table and course table
     const course = SelectCourseModel.build({ studentId, courseId, comment });
     const result = await course.save();
     await CourseModel.update(
@@ -101,16 +106,18 @@ class Course {
     );
     
     if (result) {
-        // console.log(isNew)
+    
+    // Successfully register a new course for a exist user
       if (!isNew) {
-        // console.log('119')
+
         res.send({
           code: 200,
           message: "Successfully registered",
         });
         return;
       } else {
-        // console.log('126')
+    
+    // Successfully register a new course for a new user    
         res.send({
           code: 200,
           message: "Successfully registered a new user and successfully enrolled a course",
