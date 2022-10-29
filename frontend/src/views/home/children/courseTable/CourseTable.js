@@ -3,7 +3,7 @@ import {
   Card,
   Table
 } from 'antd'
-import axios from 'axios'
+import { getRequest } from '../../../../utils/request'
 import './CourseTable.css'
 
 // label for each column
@@ -55,16 +55,6 @@ function CourseTable(props) {
     getRequest('/course', data).then((result) => {
       setCourseList(result.data.rows)
       setTotal(result.data.count)
-    })
-  }
-
-  const getRequest = (url, params) => {
-    return new Promise((resolve) => {
-      axios
-        .get(`http://localhost:8000${url}`, {
-          params
-        })
-        .then((res) => resolve(res.data))
     })
   }
 

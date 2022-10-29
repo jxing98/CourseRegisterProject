@@ -11,7 +11,7 @@ import {
   Select
 } from 'antd'
 import TextArea from 'antd/lib/input/TextArea'
-import axios from 'axios'
+import { getRequest, postRequest } from '../../../../utils/request'
 
 const { Option } = Select
 
@@ -70,7 +70,7 @@ function CourseForm(props) {
   }
 
   const handleSearchAndGetCourse = (searchInfo) => {
-      
+
     // Delete this string when the searchInfo is empty
     for (var key in searchInfo) {
       if (!searchInfo[key]) {
@@ -132,22 +132,6 @@ function CourseForm(props) {
       } else {
         message.error(result.message)
       }
-    })
-  }
-
-  const getRequest = (url, params) => {
-    return new Promise((resolve) => {
-      axios
-        .get(`http://localhost:8000${url}`, {
-          params
-        })
-        .then((res) => resolve(res.data))
-    })
-  }
-
-  const postRequest = (url, data) => {
-    return new Promise((resolve) => {
-      axios.post(`http://localhost:8000${url}`, data).then((res) => resolve(res.data))
     })
   }
   
