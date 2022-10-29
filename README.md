@@ -72,10 +72,20 @@ I tried to create user table, course table and usermaptocourse table in mysql da
 ##
 ### Database schema
 courses table
+
+
 <img width="615" alt="image" src="https://user-images.githubusercontent.com/91811861/198812750-932ea104-5f4a-410f-83cf-5f375ec6a910.png">
+
+
 users table
+
+
 <img width="370" alt="image" src="https://user-images.githubusercontent.com/91811861/198812764-1cfb9426-20d7-443e-8d96-d40a6e832646.png">
+
+
 select_course table
+
+
 <img width="249" alt="image" src="https://user-images.githubusercontent.com/91811861/198812776-9a28ed44-aa36-4772-9567-5e28b6fca14c.png">
 
 
