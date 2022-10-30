@@ -46,27 +46,27 @@ npm start
 
 
 1. Verify username and email: Please input a false username and a registered email and choose a course, then click submit, there will be display "This email has been registered, please confirm your username".
-<img width="1410" alt="image" src="https://user-images.githubusercontent.com/91811861/198793973-6801145c-5810-478a-96a4-58a36939527d.png">
+<img width="1470" alt="image" src="https://user-images.githubusercontent.com/91811861/198884872-7e2308e6-b87a-4b71-a2c2-1da04489c677.png">
 
 
 2. Vaild add for exist user: Please input vaild username and vaild email (already registered) and choose a course with enough capacity, then click submit, there will be display "Successfully registered".
-<img width="1436" alt="image" src="https://user-images.githubusercontent.com/91811861/198785787-8f19306b-47fc-47f5-a7c7-bfc593033dab.png">
+<img width="1472" alt="image" src="https://user-images.githubusercontent.com/91811861/198884860-120d3b6f-e657-40e6-a91a-b0b51e759c72.png">
 
 
 3. Exist user add a no capacity course: Please input vaild username and vaild email (already registered) and choose a course with not enough capacity (<1), then click submit, there will be display "Sorry, the class is full, and you are in waitlist".
-<img width="1444" alt="image" src="https://user-images.githubusercontent.com/91811861/198786985-4527484b-07dd-415e-90e3-1fb1d050dabd.png">
+<img width="1448" alt="image" src="https://user-images.githubusercontent.com/91811861/198884906-d6224bba-0a4e-44b7-8340-e8971f204d54.png">
 
 
 4. Exist user add already added course: Please input vaild username and vaild email (already registered) and choose a course which you already registered, then click submit, there will be display "Sorry, this course is already in your course list".
-<img width="1458" alt="image" src="https://user-images.githubusercontent.com/91811861/198793246-da3e1a12-3130-4747-bbd7-b3407feb6604.png">
+<img width="1457" alt="image" src="https://user-images.githubusercontent.com/91811861/198884923-2727e233-f835-408e-8885-cbd8ab539ccd.png">
 
 
 5. New user register a vaild course: Please input vaild username and vaild email (not registered) and choose a course with enough capacity, then click submit, there will be display "Successfully registered a new user and successfully enrolled a course".
-<img width="1449" alt="image" src="https://user-images.githubusercontent.com/91811861/198788051-bea7f3eb-e30c-4e68-bf8a-92f948278544.png">
+<img width="1453" alt="image" src="https://user-images.githubusercontent.com/91811861/198884945-4350f09b-f55b-4e6a-a3ff-9f655a026137.png">
 
 
 6. New user register a no capacity course: Please input vaild username and vaild email (not registered) and choose a course with not enough capacity (<1), then click submit, there will be display "Successfully registered a new user, but the class is full, and you are in waitlist".
-<img width="1451" alt="image" src="https://user-images.githubusercontent.com/91811861/198788550-7e1fdee9-3026-4c36-967d-5123442351f7.png">
+<img width="1460" alt="image" src="https://user-images.githubusercontent.com/91811861/198884961-2bff47a5-cd3a-4aab-8edc-8a825b3c53ca.png">
 
 ##
 ### Requirment2: Form Input: User full name, email address, current semester or year, dropdown list of available courses, a text box for comments/ message to instructor and button to submit.
