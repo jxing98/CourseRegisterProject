@@ -6,13 +6,13 @@ import {
   DatePicker,
   Form,
   Input,
-  message,
+  Modal,
   Row,
   Select
 } from 'antd'
 import TextArea from 'antd/lib/input/TextArea'
 import { getRequest, postRequest } from '../../../../utils/request'
-
+import { ExclamationCircleOutlined, CheckOutlined } from '@ant-design/icons';
 const { Option } = Select
 
 // frontend layout for antd parameters
@@ -122,7 +122,10 @@ function CourseForm(props) {
       })
     // If the capacity is not enough, send back error info
     } else {
-      message.error('Sorry, the class is full, and you are in waitlist')
+        Modal.confirm({
+            content:'Sorry, the class is full, and you are in waitlist',
+            icon:<ExclamationCircleOutlined />
+        })
     }
   }
 
@@ -137,12 +140,16 @@ function CourseForm(props) {
   const _addMyCourse = (data) => {
     postRequest('/course', data).then((result) => {
       if (result.code === 200) {
-        message.success(
-          result.message
-        )
+        Modal.confirm({
+            content:result.message,
+            icon:<CheckOutlined style= {{color : 'green'}}/>
+        })
         handleReset()
       } else {
-        message.error(result.message)
+        Modal.confirm({
+            content:result.message,
+            icon:<ExclamationCircleOutlined />
+        })
       }
     })
   }
