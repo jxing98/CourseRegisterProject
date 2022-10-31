@@ -122,7 +122,7 @@ function CourseForm(props) {
       })
     // If the capacity is not enough, send back error info
     } else {
-        Modal.confirm({
+        Modal.error({
             content:'Sorry, the class is full, and you are in waitlist',
             icon:<ExclamationCircleOutlined />
         })
@@ -140,13 +140,13 @@ function CourseForm(props) {
   const _addMyCourse = (data) => {
     postRequest('/course', data).then((result) => {
       if (result.code === 200) {
-        Modal.confirm({
+        Modal.success({
             content:result.message,
             icon:<CheckOutlined style= {{color : 'green'}}/>
         })
         handleReset()
       } else {
-        Modal.confirm({
+        Modal.error({
             content:result.message,
             icon:<ExclamationCircleOutlined />
         })
